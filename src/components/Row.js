@@ -8,24 +8,37 @@ export default class Row extends Component {
 
     componentDidMount() {
         API.getEmployees()
-
             .then(res => this.setState({ employees: res.data.results }))
             .catch(err => console.log(err))
+        
+    }
+
+    filterEmployees = (searchInput) => {
+        API.getEmployees()
+        .then(res => {
+            var currentList = res.data.results;
+            var sorted = [];
+            for (let i = 0; i < currentList.length; i++) {
+                if (currentList[i].name.first.includes((searchInput).toLowerCase())) {
+                    sorted.push(currentList[i])
+                }
+            }
+            this.setState({ employees: sorted })
+        })
+
     }
 
     render() {
         return (
 
             <div>
-
-
                 {this.state.employees.map(employee => (
                     <div className="row m-2">
                         <div className="col-md-1">
                             <img src={employee.picture.thumbnail} />
                         </div>
                         <div className="col-md-2">
-                            <p>{employee.name.title} {employee.name.first} {employee.name.last} </p>
+                            <p>{employee.name.first} {employee.name.last} </p>
                         </div>
                         <div className="col-md-3">
                             <p>{employee.email}</p>
