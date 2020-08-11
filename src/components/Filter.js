@@ -18,7 +18,7 @@ class Filter extends React.Component {
 
     render() {
         return (
-            <form className="form">
+            <form className="form m-2">
                 <input 
                 value={this.state.search}
                 name="search"
@@ -27,6 +27,11 @@ class Filter extends React.Component {
                 placeholder="Search Directory"
                 />
             </form>
+        //     <datalist id="breeds">
+        //     {props.breeds.map(breed => (
+        //       <option value={breed} key={breed} />
+        //     ))}
+        //   </datalist>
         )
     }
 

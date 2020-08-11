@@ -7,7 +7,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>Employee Directory</div>
+            <div className="m-2">Employee Directory</div>
         )
     }
 
